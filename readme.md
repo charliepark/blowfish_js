@@ -9,9 +9,7 @@ Each USER has many DOCUMENTS (or, if you prefer, NOTES). Each DOCUMENT is simply
 ## The User Experience
 
 1.  The user clicks on "create a new document".
-
     The /new page loads up, with a DOCUMENT textarea, a PASSWORD input, and a SAVE button.
-
 2.  The user types in her note.
 3.  The user enters the password / phrase and hits the SAVE button.
 4.  The app loads the show page for that document. The page has a "read" state and an "edit" state. Somewhere, we'll need to have a "delete" option, too.
@@ -28,7 +26,7 @@ The javascript that encrypts the text goes through the following process:
 2.  The javascript takes the note and invisibly prepends a string — say, "authenticated" — to the body. This string would be constant for all users and documents.
 3.  When the user goes to read or edit the document, they have to enter the password. If they've entered the proper password in, a regex on the resulting text would reveal "authenticated" as the first letters of the body. If that string is revealed, then the user has the option of changing her password. If "authenticated" isn't present, the "change password" option isn't present. This protects the user from accidentally locking themselves out of their content.
 
-When the user is in "edit" mode on a note, they *can* change the password, but 
+When the user is in "edit" mode on a note, they *can* change the password, but only if they've got the magic string in place. If they do change it, when they "save" their new password, it re-encrypts the whole thing.
 
 
 ## Other "Best Practices"
